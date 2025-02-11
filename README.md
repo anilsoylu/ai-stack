@@ -10,6 +10,8 @@ This platform allows users to:
 - View question details
 - Search through questions
 - Provide answers to questions
+- Access protected routes with authentication
+- Handle 404 errors gracefully
 
 ## Tech Stack
 
@@ -17,20 +19,24 @@ This platform allows users to:
 - **Styling:** Built-in CSS support
 - **Components:** Custom shared components for reusability
 - **Data Management:** Local data management with TypeScript
+- **Authentication:** Protected routes with Next.js middleware
+- **Error Handling:** Custom 404 page implementation
 
 ## Project Structure
 
 ```
 ├── app/
-│   └── question/
-│       └── [id]/           # Dynamic question pages
+│   ├── (protected)/
+│   │   └── question/
+│   │       └── [id]/      # Protected question pages
+│   └── not-found.tsx      # Custom 404 page
 ├── components/
 │   └── shared/
-│       ├── header/         # Navigation and search components
-│       ├── question/       # Question-related components
-│       └── answer/         # Answer-related components
+│       ├── header/        # Navigation and search components
+│       ├── question/      # Question-related components
+│       └── answer/        # Answer-related components
 ├── data/
-│   └── question.ts         # Question data management
+│   └── question.ts        # Question data management
 ```
 
 ## Getting Started
@@ -59,6 +65,14 @@ Make sure to set up your environment variables:
 ## Development
 
 You can start editing the platform by modifying the components in the `components/` directory or the pages in the `app/` directory. The application auto-updates as you edit files.
+
+### Protected Routes
+
+The application uses Next.js route groups for protected content. Any routes under `app/(protected)` require authentication.
+
+### Error Handling
+
+Custom 404 page is implemented in `app/not-found.tsx` for better user experience when accessing non-existent pages.
 
 ## Learn More
 
