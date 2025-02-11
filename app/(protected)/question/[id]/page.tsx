@@ -2,6 +2,7 @@ import { QuestionDetail } from "@/components/shared/question/detail"
 import { AnswerList } from "@/components/shared/answer/list"
 import { AnswerForm } from "@/components/shared/answer/form"
 import { questions } from "@/data/question"
+import NotFound from "@/app/not-found"
 
 type QuestionPageProps = {
   params: Promise<{ id: number }>
@@ -17,14 +18,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
   const questionData = await getQuestion(questionId)
 
   if (!questionData) {
-    return (
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold mb-4">Soru bulunamadı.</h1>
-        <p className="text-muted-foreground">
-          Lütfen daha sonra tekrar deneyiniz.
-        </p>
-      </div>
-    )
+    return <NotFound />
   }
 
   return (
